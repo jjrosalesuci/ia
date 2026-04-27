@@ -36,9 +36,9 @@ El usuario no necesita diseñar todo desde cero cada vez; el sistema reutiliza e
 
 ## Analogia facil
 
-Piensa en una caja de herramientas.
+Piensa en un libro de recetas.
 
-Un skill es como un destornillador especializado: no resuelve cualquier problema del mundo, pero es muy bueno para una tarea concreta y repetible.
+Un skill es como una receta: describe paso a paso como preparar un plato concreto. Las herramientas (tools) son los ingredientes que la receta necesita para llevarse a cabo. Sin los ingredientes adecuados la receta no se puede ejecutar, y sin la receta los ingredientes por si solos no producen el plato.
 
 ## Relacion con los demas conceptos
 
