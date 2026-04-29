@@ -28,6 +28,20 @@ Un LLM se parece a un cocinero muy entrenado que ha visto miles de recetas.
 
 No memoriza todo como una enciclopedia perfecta, pero aprende patrones: que ingredientes combinan, que pasos suelen seguirse y que tipo de plato encaja con una peticion concreta.
 
+## Diagrama
+
+```mermaid
+flowchart LR
+    IN[Prompt + contexto] --> TOK[Tokenizacion]
+    TOK --> EMB[Embeddings de entrada]
+    EMB --> NN[Red neuronal Transformer]
+    NN --> PRED[Prediccion del siguiente token]
+    PRED --> LOOP{Fin de respuesta?}
+    LOOP -- No --> NN
+    LOOP -- Si --> OUT[Secuencia de tokens]
+    OUT --> TXT[Respuesta en texto]
+```
+
 ## Relacion con los demas conceptos
 
 - Recibe un [Prompt](01-prompt.md) como instruccion principal.
@@ -39,6 +53,7 @@ No memoriza todo como una enciclopedia perfecta, pero aprende patrones: que ingr
 - Puede activar o coordinar un [Skill](08-skill.md) para usar capacidades adicionales.
 - Puede integrarse con herramientas mediante [MCP](09-mcp.md).
 - Puede participar en un flujo donde exista un [Prompt dentro de MCP](10-prompt-en-mcp.md), no solo un prompt aislado escrito por el usuario.
+- Su calidad se mide y se vigila con [Evaluaciones](12-evaluaciones.md), que detectan regresiones y comparan modelos.
 
 ## Idea clave
 

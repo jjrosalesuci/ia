@@ -43,6 +43,24 @@ Un agente se parece a un jefe de operaciones.
 
 No hace todo con sus propias manos, pero coordina personas, herramientas y pasos para que una meta se complete. El LLM seria como su capacidad de razonamiento linguistico; las herramientas serian el equipo que tiene disponible.
 
+## Diagrama
+
+```mermaid
+flowchart TD
+    GOAL[Objetivo del usuario] --> AG[Agente]
+    AG --> PLAN[Planifica pasos]
+    PLAN --> ACT{Decide accion}
+    ACT -->|Pensar| LLM[LLM razona]
+    ACT -->|Recuperar| EMB[Embeddings / RAG]
+    ACT -->|Usar herramienta| TOOL[Skill o MCP]
+    LLM --> OBS[Observacion]
+    EMB --> OBS
+    TOOL --> OBS
+    OBS --> CHECK{Objetivo cumplido?}
+    CHECK -- No --> PLAN
+    CHECK -- Si --> RESP[Respuesta o tarea completada]
+```
+
 ## Relacion con los demas conceptos
 
 - Recibe objetivos o instrucciones formuladas como [Prompt](01-prompt.md).
@@ -55,6 +73,7 @@ No hace todo con sus propias manos, pero coordina personas, herramientas y pasos
 - Puede activar un [Skill](08-skill.md) cuando necesita una capacidad especializada y reutilizable.
 - Puede conectarse a herramientas y recursos externos mediante [MCP](09-mcp.md).
 - Puede consumir un [Prompt dentro de MCP](10-prompt-en-mcp.md) como plantilla o instruccion estructurada dentro de un flujo mayor.
+- Su comportamiento, no solo su respuesta final, debe medirse con [Evaluaciones](12-evaluaciones.md): aciertos, pasos innecesarios, herramientas mal invocadas y costo total.
 
 ## Idea clave
 

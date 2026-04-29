@@ -42,6 +42,19 @@ Si dices "hazme una casa", la respuesta puede ser cualquier cosa.
 
 Si dices "quiero una casa de una planta, con 3 habitaciones, patio pequeno y presupuesto limitado", el resultado se acerca mucho mas a lo que necesitas.
 
+## Diagrama
+
+```mermaid
+flowchart LR
+    IDEA[Necesidad del usuario] --> DRAFT[Borrador de prompt]
+    DRAFT --> RUN[Ejecutar contra el LLM]
+    RUN --> OUT[Respuesta]
+    OUT --> EVAL{Cumple objetivos?}
+    EVAL -- No --> REFINE[Refinar: rol, formato, ejemplos, contexto]
+    REFINE --> RUN
+    EVAL -- Si --> SAVE[Plantilla reutilizable]
+```
+
 ## Relacion con los demas conceptos
 
 - Se apoya directamente en [Prompt](01-prompt.md), porque trabaja sobre la calidad de la instruccion inicial.

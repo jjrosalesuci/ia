@@ -40,6 +40,21 @@ Piensa en un libro de recetas.
 
 Un skill es como una receta: describe paso a paso como preparar un plato concreto. Las herramientas (tools) son los ingredientes que la receta necesita para llevarse a cabo. Sin los ingredientes adecuados la receta no se puede ejecutar, y sin la receta los ingredientes por si solos no producen el plato.
 
+## Diagrama
+
+```mermaid
+flowchart LR
+    AG[Agente o asistente] -->|invoca| SK[Skill: resumir reunion]
+    SK --> P[Prompt interno especializado]
+    SK --> CTX[Contexto requerido: transcripcion]
+    SK --> TOOLS[Herramientas: lectura de archivo, fecha, calendario]
+    P --> LLM[LLM]
+    CTX --> LLM
+    TOOLS --> LLM
+    LLM --> OUT[Salida con formato fijo]
+    OUT --> AG
+```
+
 ## Relacion con los demas conceptos
 
 - Puede usar un [Prompt](01-prompt.md) interno para orientar la tarea que resuelve.

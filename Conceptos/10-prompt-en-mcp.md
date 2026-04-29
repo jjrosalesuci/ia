@@ -39,6 +39,18 @@ Es como una plantilla profesional en una empresa.
 
 En lugar de redactar desde cero cada informe, usas un formato aprobado con campos claros. Eso reduce errores y hace que todos trabajen con la misma base.
 
+## Diagrama
+
+```mermaid
+flowchart LR
+    SRV[Servidor MCP] -->|expone| TPL["Prompt plantilla: analizar_incidente"]
+    PARAMS[Parametros: descripcion, logs, severidad, servicio] --> TPL
+    TOOLS[Resultados de herramientas / RAG] --> TPL
+    TPL --> RENDER[Prompt final renderizado]
+    RENDER --> LLM[LLM]
+    LLM --> R[Respuesta estructurada]
+```
+
 ## Relacion con los demas conceptos
 
 - Parte del concepto general de [Prompt](01-prompt.md), pero en un entorno mas estructurado.

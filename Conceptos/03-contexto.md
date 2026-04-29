@@ -34,6 +34,21 @@ Decir "me siento mal" sirve poco.
 
 Decir "me siento mal, tengo fiebre desde ayer, alergia a penicilina y me duele el pecho" cambia por completo la calidad de la evaluacion.
 
+## Diagrama
+
+```mermaid
+flowchart LR
+    P[Prompt del usuario] --> CTX[Contexto]
+    HIST[Historial de conversacion] --> CTX
+    DOCS[Documentos / RAG] --> CTX
+    REGLAS[Reglas e instrucciones de sistema] --> CTX
+    USR[Perfil del usuario] --> CTX
+    TOOLS[Resultados de herramientas] --> CTX
+    CTX --> WIN[Ventana de contexto]
+    WIN --> LLM[LLM]
+    LLM --> R[Respuesta]
+```
+
 ## Relacion con los demas conceptos
 
 - Complementa al [Prompt](01-prompt.md) porque una buena instruccion suele necesitar informacion de apoyo.
