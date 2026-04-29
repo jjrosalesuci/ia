@@ -50,6 +50,7 @@ Si dices "quiero una casa de una planta, con 3 habitaciones, patio pequeno y pre
 - Se conecta con [LLM](05-llm.md) porque las tecnicas de prompt engineering existen para guiar mejor el comportamiento del modelo.
 - Se relaciona con [Skill](08-skill.md) y [MCP](09-mcp.md) cuando el prompt debe coordinar herramientas, acciones o llamadas externas.
 - Se vincula con [Prompt dentro de MCP](10-prompt-en-mcp.md) porque, en sistemas compuestos, tambien importa como se formula la instruccion dentro de un flujo conectado.
+- Se mide con [Evaluacion (Evals)](13-evaluacion.md): cada cambio de prompt deberia validarse contra un golden set para detectar regresiones antes de publicarlo.
 
 ## Idea clave
 

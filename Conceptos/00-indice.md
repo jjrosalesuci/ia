@@ -16,6 +16,31 @@ La idea es avanzar desde lo mas cercano al usuario hasta lo mas interno del sist
 10. [Prompt dentro de MCP](10-prompt-en-mcp.md)
 11. [Agente](11-agente.md)
 12. [RPI (Research, Plan, Implement)](12-rpi.md)
+13. [Evaluacion (Evals)](13-evaluacion.md)
+
+## Mapa de conceptos
+
+```mermaid
+flowchart TD
+    U[Usuario] --> P[Prompt]
+    P --> PE[Prompt engineering]
+    PE --> CTX[Contexto]
+    CTX --> TOK[Tokens]
+    TOK --> LLM[LLM]
+    EMB[Embeddings] --> CTX
+    FT[Fine-tuning] --> LLM
+    LLM --> R[Respuesta]
+    AG[Agente] --> P
+    AG --> SK[Skills]
+    AG --> MCP[MCP]
+    SK --> MCP
+    MCP --> PMCP[Prompt dentro de MCP]
+    PMCP --> LLM
+    AG --> RPI[RPI: Research-Plan-Implement]
+    R --> EV[Evaluacion / Evals]
+    EV -.feedback.-> PE
+    EV -.feedback.-> AG
+```
 
 ## Como leer esta guia
 
@@ -40,6 +65,32 @@ Una forma simple de ver todo el sistema es esta:
 6. Si hace falta buscar informacion, usar herramientas o llamar servicios, pueden intervenir skills o MCP.
 7. Si el sistema fue especializado para una tarea concreta, puede haber pasado por fine-tuning.
 8. Si necesita buscar similitud semantica entre textos, puede usar embeddings.
+9. La calidad de las respuestas se mide con un proceso de evaluacion (evals), que detecta regresiones cuando algo cambia.
+
+```mermaid
+sequenceDiagram
+    participant U as Usuario
+    participant A as Agente
+    participant C as Capa de contexto
+    participant M as LLM
+    participant T as Skills / MCP
+    participant E as Evaluacion
+
+    U->>A: Prompt
+    A->>C: Pide contexto relevante
+    C-->>A: Documentos / datos (puede usar embeddings)
+    A->>M: Prompt + contexto (tokens)
+    M-->>A: Respuesta candidata
+    opt Necesita herramientas
+        A->>T: Invoca skill / herramienta MCP
+        T-->>A: Resultado
+        A->>M: Reintroduce resultado en el prompt
+        M-->>A: Respuesta final
+    end
+    A-->>U: Respuesta
+    A->>E: Muestra de la interaccion
+    E-->>A: Score / alerta de regresion
+```
 
 ## Analogía general
 
@@ -56,7 +107,8 @@ Imagina un restaurante:
 - Un skill es una capacidad extra, como un horno especial o un sumiller.
 - MCP es el protocolo para conectar cocina con otras estaciones y herramientas.
 - El prompt dentro de MCP es la instruccion concreta que se envia a traves de esa infraestructura.
+- La evaluacion (evals) es el sistema de control de calidad: catadores con una rubrica que prueban platos representativos antes de cambiar la carta y vuelven a probar muestras del servicio en vivo.
 
 ## Resumen general
 
-Un sistema moderno de IA no es solo un modelo aislado. Normalmente combina instrucciones, contexto, modelos, representaciones numericas, componentes de orquestacion y mecanismos de integracion con herramientas externas. Entender estos conceptos en conjunto permite ver el flujo completo: alguien pide algo, un agente organiza los pasos, el sistema prepara contexto, el modelo procesa la informacion y, si hace falta, se apoya en componentes externos para responder mejor.
+Un sistema moderno de IA no es solo un modelo aislado. Normalmente combina instrucciones, contexto, modelos, representaciones numericas, componentes de orquestacion, mecanismos de integracion con herramientas externas y un proceso de evaluacion que mide si todo eso funciona en conjunto. Entender estos conceptos juntos permite ver el flujo completo: alguien pide algo, un agente organiza los pasos, el sistema prepara contexto, el modelo procesa la informacion, si hace falta se apoya en componentes externos para responder mejor, y un sistema de evals valida que la calidad se mantenga cuando algo cambia.

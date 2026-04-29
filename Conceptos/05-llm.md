@@ -39,6 +39,7 @@ No memoriza todo como una enciclopedia perfecta, pero aprende patrones: que ingr
 - Puede activar o coordinar un [Skill](08-skill.md) para usar capacidades adicionales.
 - Puede integrarse con herramientas mediante [MCP](09-mcp.md).
 - Puede participar en un flujo donde exista un [Prompt dentro de MCP](10-prompt-en-mcp.md), no solo un prompt aislado escrito por el usuario.
+- Su calidad real se verifica con [Evaluacion (Evals)](13-evaluacion.md), que mide de forma sistematica si el modelo elegido cumple los criterios del caso de uso.
 
 ## Idea clave
 
