@@ -15,7 +15,8 @@ La idea es avanzar desde lo mas cercano al usuario hasta lo mas interno del sist
 9. [MCP](09-mcp.md)
 10. [Prompt dentro de MCP](10-prompt-en-mcp.md)
 11. [Agente](11-agente.md)
-12. [QRSPI](12-qrspi.md)
+12. [RPI (Research, Plan, Implement)](12-rpi.md)
+13. [QRSPI](13-qrspi.md)
 
 ## Como leer esta guia
 

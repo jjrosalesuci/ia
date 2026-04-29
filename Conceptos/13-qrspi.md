@@ -38,6 +38,7 @@ Una analogia ayudara a visualizar QRSPI sin necesidad de conocer todos los detal
 - Puede activarse como o junto a un [Skill](08-skill.md).
 - Puede integrarse con herramientas externas mediante [MCP](09-mcp.md) y consumir un [Prompt dentro de MCP](10-prompt-en-mcp.md).
 - Puede ser orquestado por un [Agente](11-agente.md) dentro de un flujo mayor.
+- Puede combinarse con [RPI (Research, Plan, Implement)](12-rpi.md) como ciclo de trabajo previo a su ejecucion.
 
 ## Idea clave
 
