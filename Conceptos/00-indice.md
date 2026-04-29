@@ -18,6 +18,7 @@ La idea es avanzar desde lo mas cercano al usuario hasta lo mas interno del sist
 12. [RPI (Research, Plan, Implement)](12-rpi.md)
 13. [QRSPI](13-qrspi.md)
 
+
 ## Como leer esta guia
 
 Cada archivo sigue la misma estructura:
