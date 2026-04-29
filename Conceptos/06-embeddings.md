@@ -34,6 +34,24 @@ Piensa en un mapa de ciudades.
 
 Dos ciudades cercanas en el mapa suelen tener relacion geografica. En embeddings, dos textos cercanos en el espacio vectorial suelen tener relacion de significado.
 
+## Diagrama
+
+```mermaid
+flowchart LR
+    DOC1[Documento 1] --> M[Modelo de embeddings]
+    DOC2[Documento 2] --> M
+    DOC3[Documento N] --> M
+    M --> V[(Base vectorial)]
+    Q[Pregunta del usuario] --> M2[Modelo de embeddings]
+    M2 --> QV[Vector de la pregunta]
+    QV --> SIM[Busqueda por similitud]
+    V --> SIM
+    SIM --> TOP[Top-K documentos relevantes]
+    TOP --> CTX[Contexto para el LLM]
+    CTX --> LLM[LLM]
+    LLM --> R[Respuesta]
+```
+
 ## Relacion con los demas conceptos
 
 - Se conecta con el [LLM](05-llm.md) porque muchas aplicaciones usan embeddings para traer contexto util antes de consultar al modelo.

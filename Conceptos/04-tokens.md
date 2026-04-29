@@ -39,6 +39,21 @@ Piensa en fichas de construccion.
 
 Una persona ve una casa completa, pero el sistema trabaja con ladrillos. Los tokens son esos ladrillos con los que el modelo arma y entiende el texto.
 
+## Diagrama
+
+```mermaid
+flowchart LR
+    TXT["Texto: Inteligencia artificial"] --> TOK[Tokenizador]
+    TOK --> T1[Inteligencia]
+    TOK --> T2[artificial]
+    T1 --> ID1[id 4521]
+    T2 --> ID2[id 8830]
+    ID1 --> VEC[Vectores]
+    ID2 --> VEC
+    VEC --> LLM[LLM]
+    LLM --> OUT[Tokens de salida] --> DETOK[Destokenizar] --> RESP[Texto final]
+```
+
 ## Relacion con los demas conceptos
 
 - El [Prompt](01-prompt.md) termina convertido en tokens antes de llegar al modelo.

@@ -36,6 +36,19 @@ MCP se parece a un enchufe estandar.
 
 Si todos los aparatos usan conectores distintos, integrarlos es costoso. Si comparten un estandar, conectarlos es mucho mas simple.
 
+## Diagrama
+
+```mermaid
+flowchart LR
+    CLI[Cliente IA / Agente] <-->|MCP| S1[Servidor MCP A: tickets]
+    CLI <-->|MCP| S2[Servidor MCP B: documentacion]
+    CLI <-->|MCP| S3[Servidor MCP C: base vectorial]
+    S1 --> T1[Tool: buscar_ticket]
+    S2 --> R1[Resource: docs internos]
+    S3 --> P1[Prompt reutilizable: analizar_incidente]
+    CLI --> LLM[LLM]
+```
+
 ## Relacion con los demas conceptos
 
 - Extiende lo que puede hacer un [LLM](05-llm.md), porque le da acceso estructurado a herramientas y datos externos.

@@ -32,6 +32,18 @@ Imagina un medico general que luego hace una residencia en cardiologia.
 
 Sigue siendo medico, pero ahora esta mas afinado para un tipo particular de problema.
 
+## Diagrama
+
+```mermaid
+flowchart LR
+    BASE[Modelo base preentrenado] --> FT[Fine-tuning]
+    DATA[Dataset etiquetado del dominio] --> FT
+    FT --> SPEC[Modelo especializado]
+    SPEC --> EVAL[Evaluacion]
+    EVAL -- Mejora --> DEPLOY[Despliegue]
+    EVAL -- Regresion --> DATA
+```
+
 ## Relacion con los demas conceptos
 
 - Se diferencia de [Prompt engineering](02-prompt-engineering.md): uno mejora la instruccion; el otro modifica el modelo.
@@ -40,6 +52,7 @@ Sigue siendo medico, pero ahora esta mas afinado para un tipo particular de prob
 - Puede trabajar mejor si el sistema sigue usando buen [Contexto](03-contexto.md), porque un modelo especializado tampoco adivina informacion ausente.
 - Puede combinarse con [Embeddings](06-embeddings.md), por ejemplo en sistemas que recuperan informacion y ademas usan un modelo adaptado al dominio.
 - Puede formar parte de una arquitectura con [Skill](08-skill.md) y [MCP](09-mcp.md), pero no los sustituye: solo especializa el modelo central.
+- Su impacto debe medirse con [Evaluaciones](12-evaluaciones.md), comparando el modelo afinado con el modelo base sobre un golden dataset.
 
 ## Idea clave
 

@@ -42,6 +42,24 @@ Si solo dices "quiero ir", el conductor no sabe a donde, por que ruta ni con que
 
 Si dices "llevame al aeropuerto por la ruta mas rapida y evita peajes", la instruccion es mucho mas util. Con la IA pasa lo mismo.
 
+## Diagrama
+
+```mermaid
+flowchart LR
+    U[Usuario] --> P[Prompt]
+    P --> TASK[Tarea]
+    P --> ROL[Rol]
+    P --> EJ[Ejemplos]
+    P --> FMT[Formato esperado]
+    P --> RESTR[Restricciones]
+    TASK --> LLM[LLM]
+    ROL --> LLM
+    EJ --> LLM
+    FMT --> LLM
+    RESTR --> LLM
+    LLM --> R[Respuesta]
+```
+
 ## Relacion con los demas conceptos
 
 - Se relaciona con [Prompt engineering](02-prompt-engineering.md) porque esa disciplina busca diseñar prompts mas claros y efectivos.

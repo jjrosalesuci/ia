@@ -15,6 +15,7 @@ La idea es avanzar desde lo mas cercano al usuario hasta lo mas interno del sist
 9. [MCP](09-mcp.md)
 10. [Prompt dentro de MCP](10-prompt-en-mcp.md)
 11. [Agente](11-agente.md)
+12. [Evaluaciones (LLM Evals)](12-evaluaciones.md)
 12. [RPI (Research, Plan, Implement)](12-rpi.md)
 13. [QRSPI](13-qrspi.md)
 
@@ -42,6 +43,31 @@ Una forma simple de ver todo el sistema es esta:
 6. Si hace falta buscar informacion, usar herramientas o llamar servicios, pueden intervenir skills o MCP.
 7. Si el sistema fue especializado para una tarea concreta, puede haber pasado por fine-tuning.
 8. Si necesita buscar similitud semantica entre textos, puede usar embeddings.
+9. En todo momento, las evaluaciones (evals) miden si el resultado es bueno y si los cambios mejoran o empeoran el sistema.
+
+## Diagrama del flujo general
+
+```mermaid
+flowchart TD
+    U[Usuario] -->|escribe| P[Prompt]
+    P --> PE[Prompt engineering]
+    PE --> CTX[Contexto]
+    EMB[(Embeddings / RAG)] --> CTX
+    CTX --> TOK[Tokens]
+    TOK --> LLM[LLM]
+    LLM --> RESP[Respuesta]
+    AG[Agente] -.coordina.-> P
+    AG -.invoca.-> SK[Skill]
+    SK --> MCP[MCP]
+    MCP --> TOOLS[Herramientas y datos externos]
+    TOOLS --> CTX
+    FT[Fine-tuning] -.especializa.-> LLM
+    PMCP[Prompt dentro de MCP] -.estructura.-> P
+    RESP --> EVAL[Evaluaciones]
+    EVAL -.retroalimenta.-> PE
+    EVAL -.retroalimenta.-> FT
+    EVAL -.retroalimenta.-> AG
+```
 
 ## Analogía general
 
@@ -58,6 +84,7 @@ Imagina un restaurante:
 - Un skill es una capacidad extra, como un horno especial o un sumiller.
 - MCP es el protocolo para conectar cocina con otras estaciones y herramientas.
 - El prompt dentro de MCP es la instruccion concreta que se envia a traves de esa infraestructura.
+- Las evaluaciones son los catadores y controles de calidad que comprueban que cada plato sale como debe.
 
 ## Resumen general
 
