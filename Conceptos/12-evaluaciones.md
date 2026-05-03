@@ -1,10 +1,20 @@
 # Evaluaciones (LLM Evals)
 
+## Introduccion
+
+En el desarrollo de software tradicional, los tests automatizados son la forma de garantizar que los cambios en el codigo no rompan funcionalidad existente. En sistemas de IA, el equivalente son las evaluaciones (evals): conjuntos de pruebas estructuradas que miden si el sistema produce respuestas de calidad, si mejora con los cambios y si no regresa en dimensiones que ya funcionaban bien.
+
+Sin evaluaciones, "mejorar" un sistema de IA es una opinion subjetiva. Con evaluaciones sistematicas, es una decision basada en datos. Este capitulo explica que son las evals, como se diseñan, cuales son sus tipos y como integrarlas en el ciclo de desarrollo.
+
+---
+
 ## Definicion simple
 
 Las evaluaciones, o "evals", son pruebas sistematicas que miden que tan bien responde un sistema de IA.
 
 En simple: son la forma de saber si el modelo, el prompt, el contexto o el agente realmente estan haciendo bien su trabajo, y no solo "parece" que funcionan.
+
+---
 
 ## Explicacion tecnica
 
@@ -105,6 +115,30 @@ flowchart LR
 ## Idea clave
 
 Sin evaluaciones, "mejorar" un sistema de IA es una opinion. Con evaluaciones, es una decision medible y repetible.
+
+## Evals en el ciclo de CI/CD
+
+Asi como el codigo tiene pipelines de CI/CD que ejecutan tests en cada pull request, los sistemas de IA deben tener pipelines equivalentes que ejecuten evals automaticamente ante cualquier cambio en el prompt, el modelo, el sistema de recuperacion o la configuracion del agente.
+
+Un pipeline tipico de CI para sistemas de IA:
+
+1. El desarrollador modifica un prompt, un parametro del sistema o actualiza el modelo
+2. El pipeline ejecuta automaticamente el golden dataset contra la nueva version
+3. Se calculan los scores y se comparan con el baseline de la version anterior
+4. Si cualquier metrica cae por debajo del umbral definido, el pipeline falla y el cambio no puede mergearse
+5. Si todas las metricas superan el umbral (o mejoran), el cambio puede avanzar
+
+Herramientas populares para implementar esto:
+
+- **Promptfoo:** framework open source para testing de prompts y LLMs
+- **Braintrust:** plataforma para evals y monitoreo de LLMs
+- **LangSmith:** plataforma de LangChain para tracing y evaluacion
+- **RAGAS:** libreria especifica para evaluar sistemas RAG
+- **DeepEval:** framework de testing para LLMs estilo pytest
+
+## Resumen del capitulo
+
+Las evaluaciones son el mecanismo de control de calidad de los sistemas de IA. Sin ellas, los cambios en prompts, modelos o configuracion son apuestas. Con un sistema de evals bien diseñado —golden dataset representativo, metricas combinadas, evaluacion continua en CI/CD— los cambios se pueden tomar con confianza y las regresiones se detectan antes de llegar a produccion.
 
 ## Referencias
 
