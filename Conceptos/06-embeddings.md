@@ -87,7 +87,7 @@ RAG resuelve dos limitaciones criticas de los LLMs:
 La calidad de un sistema RAG depende mucho de como se dividen los documentos. Estrategias comunes:
 
 - **Chunk fijo:** dividir en fragmentos de N caracteres o palabras. Simple pero puede cortar ideas a la mitad.
-- **Chunk por oracion o parrafo:** mantiene unidades semánticas. Mejor calidad pero tamaños variables.
+- **Chunk por oracion o parrafo:** mantiene unidades semanticas. Mejor calidad pero tamaños variables.
 - **Chunk con solapamiento:** incluir los ultimos X tokens del chunk anterior en el inicio del siguiente. Preserva el contexto en los bordes.
 - **Chunk jerarquico:** mantener chunks pequeños para recuperacion precisa pero incluir el documento padre completo cuando se necesita mas contexto.
 

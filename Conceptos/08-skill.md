@@ -66,6 +66,7 @@ Un skill bien diseñado deberia:
 3. **Ser testeable independientemente.** Debe poder probarse con casos de entrada conocidos y resultados esperados.
 4. **Ser robusto ante entradas imperfectas.** En la practica, los datos de entrada rara vez son perfectos. El skill debe manejar casos borde.
 5. **Ser auditable.** Debe quedar registro de que datos recibio, que herramientas invoco y que produjo.
+6. **Ser componible.** Las tareas complejas no siempre requieren un skill monolitico: a veces es mejor orquestar varios skills enfocados en secuencia o en paralelo. Un skill que hace bien una cosa puede combinarse con otros para cubrir flujos mas elaborados.
 
 ---
 
