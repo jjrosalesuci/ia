@@ -1,6 +1,10 @@
 # Conceptos de IA Moderna
 
-Esta carpeta explica, paso a paso, las piezas mas comunes de un sistema moderno de inteligencia artificial.
+## Introduccion
+
+Este libro explica, paso a paso, las piezas fundamentales de un sistema moderno de inteligencia artificial. No es un manual academico ni un recorrido superficial: es una guia que combina rigor tecnico con claridad para que cualquier persona que trabaje con sistemas de IA —ya sea como desarrollador, product manager, arquitecto o entusiasta informado— pueda entender como funcionan estas tecnologias desde adentro.
+
+La inteligencia artificial moderna no es un bloque monolitico. Es una composicion de conceptos que se encajan: instrucciones bien formuladas, modelos capaces de procesar lenguaje, representaciones matematicas de significado, sistemas que conectan modelos con el mundo real, y agentes que coordinan todo eso para completar tareas complejas. Entender cada pieza por separado —y como se relacionan— es lo que permite construir, mejorar y evaluar sistemas de IA con criterio.
 
 La idea es avanzar desde lo mas cercano al usuario hasta lo mas interno del sistema:
 
@@ -16,8 +20,8 @@ La idea es avanzar desde lo mas cercano al usuario hasta lo mas interno del sist
 10. [Prompt dentro de MCP](10-prompt-en-mcp.md)
 11. [Agente](11-agente.md)
 12. [Evaluaciones (LLM Evals)](12-evaluaciones.md)
-12. [RPI (Research, Plan, Implement)](12-rpi.md)
-13. [QRSPI](13-qrspi.md)
+13. [RPI (Research, Plan, Implement)](12-rpi.md)
+14. [QRSPI](13-qrspi.md)
 
 
 ## Como leer esta guia
@@ -85,7 +89,17 @@ Imagina un restaurante:
 - MCP es el protocolo para conectar cocina con otras estaciones y herramientas.
 - El prompt dentro de MCP es la instruccion concreta que se envia a traves de esa infraestructura.
 - Las evaluaciones son los catadores y controles de calidad que comprueban que cada plato sale como debe.
+- RPI es el proceso de trabajo del chef: primero revisa que hay en la despensa, despues planifica el menu del dia y recien entonces empieza a cocinar.
+- QRSPI extiende ese proceso: el chef primero aclara que tipo de comensal llegara, luego investiga ingredientes disponibles, sintetiza una propuesta de platos, planifica la preparacion e implementa paso a paso.
 
 ## Resumen general
 
 Un sistema moderno de IA no es solo un modelo aislado. Normalmente combina instrucciones, contexto, modelos, representaciones numericas, componentes de orquestacion y mecanismos de integracion con herramientas externas. Entender estos conceptos en conjunto permite ver el flujo completo: alguien pide algo, un agente organiza los pasos, el sistema prepara contexto, el modelo procesa la informacion y, si hace falta, se apoya en componentes externos para responder mejor.
+
+Los patrones de trabajo como RPI y QRSPI agregan una capa de disciplina operativa: no solo importa tener los componentes correctos, sino tambien en que orden usarlos y como separar el razonamiento de la ejecucion.
+
+## Como usar este libro
+
+Cada capitulo puede leerse de forma independiente, pero el orden propuesto tiene una logica: los primeros conceptos (prompt, contexto, tokens, LLM) son los mas fundamentales. Los siguientes (embeddings, fine-tuning, skill, MCP) son componentes que se agregan sobre esa base. Los ultimos (agente, evaluaciones, RPI, QRSPI) son patrones de orquestacion y disciplinas de trabajo que integran todo lo anterior.
+
+Si eres nuevo en este campo, te recomendamos leer en orden. Si ya tienes experiencia, puedes saltar directamente al capitulo que necesitas y usar las secciones "Relacion con los demas conceptos" para navegar hacia referencias cruzadas.
