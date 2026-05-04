@@ -24,6 +24,7 @@ La idea es avanzar desde lo mas cercano al usuario hasta lo mas interno del sist
 14. [QRSPI](13-qrspi.md)
 15. [RAG y Agentic RAG](14-rag.md)
 16. [Guardrails](15-guardrails.md)
+17. [Spec Driven Development](16-spec-driven-development.md)
 
 
 ## Como leer esta guia
@@ -52,6 +53,7 @@ Una forma simple de ver todo el sistema es esta:
 9. Si el sistema necesita responder con informacion externa o especifica, puede usar RAG para recuperar documentos relevantes como contexto; si ademas necesita razonar sobre como buscar, puede usar Agentic RAG.
 10. En todo momento, las evaluaciones (evals) miden si el resultado es bueno y si los cambios mejoran o empeoran el sistema.
 11. Los guardrails son las capas de control que rodean todo el sistema: validan lo que entra y lo que sale para garantizar que el sistema opere dentro de limites seguros y predecibles.
+12. Spec Driven Development define el comportamiento esperado antes de implementar: la especificacion actua como contrato que guia al agente o al desarrollador y permite verificar automaticamente que el resultado es correcto.
 
 ## Diagrama del flujo general
 
@@ -99,6 +101,7 @@ Imagina un restaurante:
 - QRSPI extiende ese proceso: el chef primero aclara que tipo de comensal llegara, luego investiga ingredientes disponibles, sintetiza una propuesta de platos, planifica la preparacion e implementa paso a paso.
 - RAG es como enviar a un asistente a los archivos del restaurante antes de que el chef responda: el chef recibe los documentos relevantes y responde basandose en ellos, no en suposiciones. Agentic RAG es cuando el propio chef decide que buscar, cuanto buscar y evalua si lo que le trajeron es suficiente antes de preparar el plato.
 - Los guardrails son las normas del restaurante: los filtros de la cocina que aseguran que ningun plato con ingredientes prohibidos llegue a la mesa, que el personal no revele recetas secretas y que el menu solo incluya lo que el restaurante esta habilitado para ofrecer.
+- Spec Driven Development es el plano detallado que el chef y el cliente acuerdan antes de que empiece la preparacion: define exactamente que plato se esperaba, con que ingredientes y en que presentacion. Si el plato final no coincide con el plano, se corrige antes de salir de la cocina.
 
 ## Resumen general
 
@@ -110,8 +113,10 @@ RAG y Agentic RAG completan el cuadro al resolver como un sistema accede a infor
 
 Los guardrails son la ultima capa del sistema: los mecanismos de control que validan entradas y salidas para garantizar que el sistema opere dentro de limites seguros, sin contenido danino, sin fuga de informacion sensible y dentro del dominio habilitado. Sin guardrails, un sistema de IA puede ser capaz pero impredecible en produccion.
 
+Spec Driven Development completa el cuadro desde la perspectiva del desarrollo: antes de que un agente o un equipo implemente cualquier componente, una especificacion formal define su interfaz, contratos y criterios de aceptacion. Esa especificacion actua como contrato compartido que permite verificar automaticamente que el resultado es correcto y que multiples actores puedan trabajar en paralelo sin perder coherencia.
+
 ## Como usar este libro
 
-Cada capitulo puede leerse de forma independiente, pero el orden propuesto tiene una logica: los primeros conceptos (prompt, contexto, tokens, LLM) son los mas fundamentales. Los siguientes (embeddings, fine-tuning, skill, MCP) son componentes que se agregan sobre esa base. Los siguientes (agente, evaluaciones, RPI, QRSPI, RAG) son patrones de orquestacion y disciplinas de trabajo que integran todo lo anterior. Los guardrails, al final, son la capa transversal que asegura que todo el sistema opere de forma segura y predecible.
+Cada capitulo puede leerse de forma independiente, pero el orden propuesto tiene una logica: los primeros conceptos (prompt, contexto, tokens, LLM) son los mas fundamentales. Los siguientes (embeddings, fine-tuning, skill, MCP) son componentes que se agregan sobre esa base. Los siguientes (agente, evaluaciones, RPI, QRSPI, RAG) son patrones de orquestacion y disciplinas de trabajo que integran todo lo anterior. Los guardrails, son la capa transversal que asegura que todo el sistema opere de forma segura y predecible. Spec Driven Development, al final, es la disciplina de proceso que garantiza que cada componente construido —por un humano o un agente— responda a un contrato formal verificable.
 
 Si eres nuevo en este campo, te recomendamos leer en orden. Si ya tienes experiencia, puedes saltar directamente al capitulo que necesitas y usar las secciones "Relacion con los demas conceptos" para navegar hacia referencias cruzadas.
