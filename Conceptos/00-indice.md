@@ -22,6 +22,7 @@ La idea es avanzar desde lo mas cercano al usuario hasta lo mas interno del sist
 12. [Evaluaciones (LLM Evals)](12-evaluaciones.md)
 13. [RPI (Research, Plan, Implement)](12-rpi.md)
 14. [QRSPI](13-qrspi.md)
+15. [RAG y Agentic RAG](14-rag.md)
 
 
 ## Como leer esta guia
@@ -47,7 +48,8 @@ Una forma simple de ver todo el sistema es esta:
 6. Si hace falta buscar informacion, usar herramientas o llamar servicios, pueden intervenir skills o MCP.
 7. Si el sistema fue especializado para una tarea concreta, puede haber pasado por fine-tuning.
 8. Si necesita buscar similitud semantica entre textos, puede usar embeddings.
-9. En todo momento, las evaluaciones (evals) miden si el resultado es bueno y si los cambios mejoran o empeoran el sistema.
+9. Si el sistema necesita responder con informacion externa o especifica, puede usar RAG para recuperar documentos relevantes como contexto; si ademas necesita razonar sobre como buscar, puede usar Agentic RAG.
+10. En todo momento, las evaluaciones (evals) miden si el resultado es bueno y si los cambios mejoran o empeoran el sistema.
 
 ## Diagrama del flujo general
 
@@ -91,12 +93,15 @@ Imagina un restaurante:
 - Las evaluaciones son los catadores y controles de calidad que comprueban que cada plato sale como debe.
 - RPI es el proceso de trabajo del chef: primero revisa que hay en la despensa, despues planifica el menu del dia y recien entonces empieza a cocinar.
 - QRSPI extiende ese proceso: el chef primero aclara que tipo de comensal llegara, luego investiga ingredientes disponibles, sintetiza una propuesta de platos, planifica la preparacion e implementa paso a paso.
+- RAG es como enviar a un asistente a los archivos del restaurante antes de que el chef responda: el chef recibe los documentos relevantes y responde basandose en ellos, no en suposiciones. Agentic RAG es cuando el propio chef decide que buscar, cuanto buscar y evalua si lo que le trajeron es suficiente antes de preparar el plato.
 
 ## Resumen general
 
 Un sistema moderno de IA no es solo un modelo aislado. Normalmente combina instrucciones, contexto, modelos, representaciones numericas, componentes de orquestacion y mecanismos de integracion con herramientas externas. Entender estos conceptos en conjunto permite ver el flujo completo: alguien pide algo, un agente organiza los pasos, el sistema prepara contexto, el modelo procesa la informacion y, si hace falta, se apoya en componentes externos para responder mejor.
 
 Los patrones de trabajo como RPI y QRSPI agregan una capa de disciplina operativa: no solo importa tener los componentes correctos, sino tambien en que orden usarlos y como separar el razonamiento de la ejecucion.
+
+RAG y Agentic RAG completan el cuadro al resolver como un sistema accede a informacion externa en tiempo real: RAG recupera documentos relevantes como contexto antes de que el LLM responda; Agentic RAG convierte esa recuperacion en un proceso activo donde el agente razona sobre como y cuanto buscar hasta tener fundamento suficiente para responder.
 
 ## Como usar este libro
 
