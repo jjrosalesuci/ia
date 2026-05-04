@@ -23,6 +23,7 @@ La idea es avanzar desde lo mas cercano al usuario hasta lo mas interno del sist
 13. [RPI (Research, Plan, Implement)](12-rpi.md)
 14. [QRSPI](13-qrspi.md)
 15. [RAG y Agentic RAG](14-rag.md)
+16. [Guardrails](15-guardrails.md)
 
 
 ## Como leer esta guia
@@ -50,18 +51,21 @@ Una forma simple de ver todo el sistema es esta:
 8. Si necesita buscar similitud semantica entre textos, puede usar embeddings.
 9. Si el sistema necesita responder con informacion externa o especifica, puede usar RAG para recuperar documentos relevantes como contexto; si ademas necesita razonar sobre como buscar, puede usar Agentic RAG.
 10. En todo momento, las evaluaciones (evals) miden si el resultado es bueno y si los cambios mejoran o empeoran el sistema.
+11. Los guardrails son las capas de control que rodean todo el sistema: validan lo que entra y lo que sale para garantizar que el sistema opere dentro de limites seguros y predecibles.
 
 ## Diagrama del flujo general
 
 ```mermaid
 flowchart TD
-    U[Usuario] -->|escribe| P[Prompt]
+    U[Usuario] -->|escribe| GI[Guardrails de entrada]
+    GI -->|input validado| P[Prompt]
     P --> PE[Prompt engineering]
     PE --> CTX[Contexto]
     EMB[(Embeddings / RAG)] --> CTX
     CTX --> TOK[Tokens]
     TOK --> LLM[LLM]
-    LLM --> RESP[Respuesta]
+    LLM --> GO[Guardrails de salida]
+    GO -->|respuesta validada| RESP[Respuesta]
     AG[Agente] -.coordina.-> P
     AG -.invoca.-> SK[Skill]
     SK --> MCP[MCP]
@@ -94,6 +98,7 @@ Imagina un restaurante:
 - RPI es el proceso de trabajo del chef: primero revisa que hay en la despensa, despues planifica el menu del dia y recien entonces empieza a cocinar.
 - QRSPI extiende ese proceso: el chef primero aclara que tipo de comensal llegara, luego investiga ingredientes disponibles, sintetiza una propuesta de platos, planifica la preparacion e implementa paso a paso.
 - RAG es como enviar a un asistente a los archivos del restaurante antes de que el chef responda: el chef recibe los documentos relevantes y responde basandose en ellos, no en suposiciones. Agentic RAG es cuando el propio chef decide que buscar, cuanto buscar y evalua si lo que le trajeron es suficiente antes de preparar el plato.
+- Los guardrails son las normas del restaurante: los filtros de la cocina que aseguran que ningun plato con ingredientes prohibidos llegue a la mesa, que el personal no revele recetas secretas y que el menu solo incluya lo que el restaurante esta habilitado para ofrecer.
 
 ## Resumen general
 
@@ -103,8 +108,10 @@ Los patrones de trabajo como RPI y QRSPI agregan una capa de disciplina operativ
 
 RAG y Agentic RAG completan el cuadro al resolver como un sistema accede a informacion externa en tiempo real: RAG recupera documentos relevantes como contexto antes de que el LLM responda; Agentic RAG convierte esa recuperacion en un proceso activo donde el agente razona sobre como y cuanto buscar hasta tener fundamento suficiente para responder.
 
+Los guardrails son la ultima capa del sistema: los mecanismos de control que validan entradas y salidas para garantizar que el sistema opere dentro de limites seguros, sin contenido danino, sin fuga de informacion sensible y dentro del dominio habilitado. Sin guardrails, un sistema de IA puede ser capaz pero impredecible en produccion.
+
 ## Como usar este libro
 
-Cada capitulo puede leerse de forma independiente, pero el orden propuesto tiene una logica: los primeros conceptos (prompt, contexto, tokens, LLM) son los mas fundamentales. Los siguientes (embeddings, fine-tuning, skill, MCP) son componentes que se agregan sobre esa base. Los ultimos (agente, evaluaciones, RPI, QRSPI) son patrones de orquestacion y disciplinas de trabajo que integran todo lo anterior.
+Cada capitulo puede leerse de forma independiente, pero el orden propuesto tiene una logica: los primeros conceptos (prompt, contexto, tokens, LLM) son los mas fundamentales. Los siguientes (embeddings, fine-tuning, skill, MCP) son componentes que se agregan sobre esa base. Los siguientes (agente, evaluaciones, RPI, QRSPI, RAG) son patrones de orquestacion y disciplinas de trabajo que integran todo lo anterior. Los guardrails, al final, son la capa transversal que asegura que todo el sistema opere de forma segura y predecible.
 
 Si eres nuevo en este campo, te recomendamos leer en orden. Si ya tienes experiencia, puedes saltar directamente al capitulo que necesitas y usar las secciones "Relacion con los demas conceptos" para navegar hacia referencias cruzadas.
